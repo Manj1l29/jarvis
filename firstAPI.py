@@ -1,3 +1,4 @@
+import os
 import sys
 import requests  #Imports the requests to give API
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout)    #Basic app development widgets
@@ -75,7 +76,7 @@ class WeatherApp(QWidget):
         self.weather_button.clicked.connect(self.get_weather)   #Makes the button function
 
     def get_weather(self):
-        api_key = "28f3739da8ad4203d10cb3b899f39626"        #When the button is clicked, it will retrieve data from an online weather API
+        api_key = os.getenv("API_KEY")        #When the button is clicked, it will retrieve data from an online weather API
         city = self.city_input.text()
         url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
 
